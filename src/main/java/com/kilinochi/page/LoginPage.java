@@ -1,6 +1,7 @@
 package com.kilinochi.page;
 
 import com.kilinochi.page.factory.PageFactory;
+import com.kilinochi.page.factory.Pages;
 import com.kilinochi.page.factory.UserPageFactory;
 import org.openqa.selenium.By;
 
@@ -21,8 +22,9 @@ public final class LoginPage implements Page {
     public UserPage login() {
         $(LOGIN_LOCATOR).setValue(TECHO_BOT_1_LOGIN);
         $(PASSWORD_LOCATOR).setValue(PASSWORD);
-        $(SUBMIT_LOCATOR).pressEnter();
-        final PageFactory pageFactory = new UserPageFactory();
+        $(SUBMIT_LOCATOR).click();
+        final PageFactory pageFactory
+                = PageFactory.getFactory(Pages.UserPage);
         return (UserPage) pageFactory.create();
     }
 
