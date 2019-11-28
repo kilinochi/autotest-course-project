@@ -1,8 +1,9 @@
-package com.kilinochi.page;
+package com.kilinochi.page.login;
 
+import com.kilinochi.page.Page;
+import com.kilinochi.page.user.UserPage;
 import com.kilinochi.page.factory.PageFactory;
 import com.kilinochi.page.factory.Pages;
-import com.kilinochi.page.factory.UserPageFactory;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;

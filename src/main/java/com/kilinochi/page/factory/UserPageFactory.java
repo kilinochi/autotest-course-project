@@ -1,7 +1,7 @@
 package com.kilinochi.page.factory;
 
 import com.kilinochi.page.Page;
-import com.kilinochi.page.UserPage;
+import com.kilinochi.page.user.UserPage;
 
 public final class UserPageFactory implements PageFactory {
 
