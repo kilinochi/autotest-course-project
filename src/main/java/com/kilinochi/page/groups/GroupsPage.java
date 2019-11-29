@@ -1,5 +1,6 @@
 package com.kilinochi.page.groups;
 
+import com.kilinochi.page.Layer;
 import com.kilinochi.page.Page;
 import com.kilinochi.page.groups.layer.SelectGroupsDialogLayer;
 import com.kilinochi.page.groups.sideBar.GroupsSideBar;
@@ -19,7 +20,7 @@ public final class GroupsPage implements Page {
         return new GroupsSideBar();
     }
 
-    public SelectGroupsDialogLayer dialogLayer() {
+    public Layer dialogLayer() {
         $(CREATE_GROUP_LOCATOR).click();
         return new SelectGroupsDialogLayer();
     }

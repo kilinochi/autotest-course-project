@@ -1,6 +1,7 @@
 package com.kilinochi.page.groups.layer;
 
 import com.codeborne.selenide.SelenideElement;
+import com.kilinochi.page.Layer;
 import com.kilinochi.page.Page;
 import com.kilinochi.page.factory.PageFactory;
 import com.kilinochi.page.factory.Pages;
@@ -9,7 +10,7 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public final class ModalDialogLayer {
+public final class ModalDialogLayer implements Layer {
 
     //private static final By GROUPS_SELECT_LOCATOR = By.className("create-group-dialog_i");
     private static final By NAME_GROUP_LOCATOR = By.name("st.layer.name");
@@ -30,6 +31,30 @@ public final class ModalDialogLayer {
         subCategory = $(CATEGORY_MENU_AUTO);
         restriction = $(AGE_18_SELECTOR);
         creteGroupButton = $(CREATE_GROUP_BUTTON);
+    }
+
+    public ModalDialogLayer inputName(final String name) {
+        groupName.setValue(name);
+        return this;
+    }
+
+    public ModalDialogLayer sendDescription(final String description) {
+        groupDescription.setValue(description);
+        return this;
+    }
+
+    public ModalDialogLayer selectSubcategory(final GroupPage.Subcategory subcategory) {
+        if (subcategory == GroupPage.Subcategory.AUTO) {
+            subCategory.click();
+        }
+        return this;
+    }
+
+    public ModalDialogLayer selectRestriction(final boolean restriction) {
+        if(restriction) {
+            this.restriction.click();
+        }
+        return this;
     }
 
     public Page groupPage() {
