@@ -13,6 +13,8 @@ public interface PageFactory {
                 return new LoginPageFactory();
             case GroupsPage:
                 return new GroupsPageFactory();
+            case GroupPage:
+                return new GroupPageFactory();
             default:
                 throw new IllegalArgumentException();
         }

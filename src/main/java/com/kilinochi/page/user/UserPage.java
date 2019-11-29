@@ -13,7 +13,7 @@ public final class UserPage implements Page {
 
     private static final By GROUPS_LOCATOR = By.xpath("//*[@hrefattrs=\"st.cmd=userAltGroup&st._aid=NavMenu_User_AltGroups\"]");
 
-    public GroupsPage clickToGroups() {
+    public GroupsPage groups() {
         $(GROUPS_LOCATOR).click();
         return (GroupsPage) PageFactory
                 .getFactory(Pages.GroupsPage)

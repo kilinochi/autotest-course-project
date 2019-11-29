@@ -1,3 +1,4 @@
+import com.kilinochi.page.groups.layer.SelectGroupsDialogLayer;
 import com.kilinochi.page.login.LoginPage;
 import com.kilinochi.page.user.UserPage;
 import com.kilinochi.page.factory.PageFactory;
@@ -16,7 +17,8 @@ public final class CreateGroup {
                 .getFactory(Pages.LoginPage)
                 .create();
         final UserPage userPage = loginPage.login();
-        final GroupsPage groupsPage = userPage.clickToGroups();
-        groupsPage.clickToMyGroups();
+        final GroupsPage groupsPage = userPage.groups();
+        final SelectGroupsDialogLayer dialogLayer = groupsPage.dialogLayer();
+
     }
 }
