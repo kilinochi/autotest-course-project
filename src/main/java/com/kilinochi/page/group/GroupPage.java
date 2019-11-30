@@ -6,13 +6,13 @@ public final class GroupPage implements Page {
 
     private String groupId;
 
-    @Override
-    public void check() {
-
-    }
-
     public String getGroupId() {
         return groupId;
+    }
+
+    @Override
+    public Page check() {
+        return this;
     }
 
     public enum Subcategory {

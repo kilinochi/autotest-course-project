@@ -30,7 +30,7 @@ public final class LoginPage implements Page {
     }
 
     @Override
-    public void check() {
-
+    public Page check() {
+        return this;
     }
 }

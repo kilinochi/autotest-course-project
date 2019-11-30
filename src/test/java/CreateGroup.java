@@ -20,13 +20,19 @@ public final class CreateGroup {
         open("https://ok.ru/");
         final LoginPage loginPage = (LoginPage) PageFactory
                 .getFactory(Pages.LoginPage)
-                .create();
-        final UserPage userPage = loginPage.login();
-        final GroupsPage groupsPage = userPage.groups();
+                .create().check();
+        final UserPage userPage = (UserPage) loginPage.login().check();
+        final GroupsPage groupsPage = (GroupsPage) userPage.groups().check();
         final SelectGroupsDialogLayer dialogLayer = (SelectGroupsDialogLayer) groupsPage.dialogLayer();
         final List<GroupPageTypeCard> typeCards = dialogLayer.typeCards();
         final GroupPageTypeCard typeCard = typeCards.get(0);
         final ModalDialogLayer modalDialogLayer = (ModalDialogLayer) typeCard.dialogLayer();
-        final GroupPage page = (GroupPage) modalDialogLayer.groupPage();
+        final GroupPage groupPage = (GroupPage) modalDialogLayer.inputName("Cool group")
+                .sendDescription("Very cool group")
+                .selectRestriction(true)
+                .selectSubcategory(GroupPage.Subcategory.AUTO)
+                .groupPage()
+                .check();
+        final String groupId = groupPage.getGroupId();
     }
 }

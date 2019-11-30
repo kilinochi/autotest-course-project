@@ -21,7 +21,7 @@ public final class UserPage implements Page {
     }
 
     @Override
-    public void check() {
-
+    public Page check() {
+        return this;
     }
 }

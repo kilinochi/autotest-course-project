@@ -1,5 +1,6 @@
 package com.kilinochi.page.groups.layer;
 
+import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.SelenideElement;
 import com.kilinochi.page.Layer;
 import com.kilinochi.page.groups.card.GroupPageTypeCard;
@@ -20,7 +21,7 @@ public final class SelectGroupsDialogLayer implements Layer {
     }
 
     public List<GroupPageTypeCard> typeCards() {
-        return $$(GROUPS_SELECT_LOCATOR)
+        return $$(GROUPS_SELECT_LOCATOR).shouldBe(CollectionCondition.sizeNotEqual(0), 1000)
                 .stream()
                 .map(GroupPageTypeCard::new)
                 .collect(Collectors.toCollection(ArrayList::new));
