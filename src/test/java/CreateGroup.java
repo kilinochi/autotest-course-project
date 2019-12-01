@@ -1,3 +1,4 @@
+import com.codeborne.selenide.Selenide;
 import com.kilinochi.page.group.GroupPage;
 import com.kilinochi.page.groups.card.GroupPageTypeCard;
 import com.kilinochi.page.groups.layer.ModalDialogLayer;
@@ -7,6 +8,7 @@ import com.kilinochi.page.user.UserPage;
 import com.kilinochi.page.factory.PageFactory;
 import com.kilinochi.page.factory.Pages;
 import com.kilinochi.page.groups.GroupsPage;
+import org.junit.After;
 import org.junit.Test;
 
 import java.util.List;
@@ -27,12 +29,17 @@ public final class CreateGroup {
         final List<GroupPageTypeCard> typeCards = dialogLayer.typeCards();
         final GroupPageTypeCard typeCard = typeCards.get(0);
         final ModalDialogLayer modalDialogLayer = (ModalDialogLayer) typeCard.dialogLayer();
-        final GroupPage groupPage = (GroupPage) modalDialogLayer.inputName("Cool group")
+        modalDialogLayer.inputName("Cool group")
                 .sendDescription("Very cool group")
                 .selectRestriction(true)
                 .selectSubcategory(GroupPage.Subcategory.AUTO)
                 .groupPage()
                 .check();
-        final String groupId = groupPage.getGroupId();
+    }
+
+    @After
+    public void after() {
+        open("https://ok.ru/groups");
+
     }
 }

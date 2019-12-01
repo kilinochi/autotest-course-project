@@ -12,6 +12,7 @@ import static com.codeborne.selenide.Selenide.$;
 public final class UserPage implements Page {
 
     private static final By GROUPS_LOCATOR = By.xpath("//*[@hrefattrs=\"st.cmd=userAltGroup&st._aid=NavMenu_User_AltGroups\"]");
+    private static final By NAV_BAR_LOCATOR = By.xpath("//*[@class ='nav-side __navigation']");
 
     public GroupsPage groups() {
         $(GROUPS_LOCATOR).click();
@@ -22,6 +23,7 @@ public final class UserPage implements Page {
 
     @Override
     public Page check() {
+        $(NAV_BAR_LOCATOR).should(Condition.visible);
         return this;
     }
 }
