@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public final class MusicPage implements Page {
 
-    private static final By RADIO_LOCATOR = By.xpath("//*[@class ='wm-menu_link __3121tz __current __radio']");
+    private static final By RADIO_LOCATOR = By.xpath("//*[@data-l ='t,radio']");
 
     public RadioTab radioTab() {
         $(RADIO_LOCATOR).click();
