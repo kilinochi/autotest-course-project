@@ -4,7 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import com.kilinochi.page.Layer;
 import com.kilinochi.page.groups.layer.ModalDialogLayer;
 
-public class GroupPageTypeCard {
+public final class GroupPageTypeCard {
 
     private final SelenideElement element;
 

@@ -2,7 +2,6 @@ package com.kilinochi.page.groups;
 
 import com.kilinochi.page.Layer;
 import com.kilinochi.page.Page;
-import com.kilinochi.page.group.GroupPage;
 import com.kilinochi.page.groups.layer.SelectGroupsDialogLayer;
 import com.kilinochi.page.groups.sideBar.GroupsSideBar;
 import org.openqa.selenium.By;

@@ -15,6 +15,8 @@ public interface PageFactory {
                 return new GroupsPageFactory();
             case GroupPage:
                 return new GroupPageFactory();
+            case MusicPage:
+                return new MusicPageFactory();
             default:
                 throw new IllegalArgumentException();
         }

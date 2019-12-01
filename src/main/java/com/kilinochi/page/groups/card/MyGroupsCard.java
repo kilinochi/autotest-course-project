@@ -1,7 +1,6 @@
 package com.kilinochi.page.groups.card;
 
 import com.codeborne.selenide.SelenideElement;
-import com.kilinochi.page.Page;
 import com.kilinochi.page.factory.PageFactory;
 import com.kilinochi.page.factory.Pages;
 import com.kilinochi.page.group.GroupPage;
