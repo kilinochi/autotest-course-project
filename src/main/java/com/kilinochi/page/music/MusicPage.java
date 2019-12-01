@@ -1,7 +1,7 @@
-package com.kilinochi.page.groups.music;
+package com.kilinochi.page.music;
 
 import com.kilinochi.page.Page;
-import com.kilinochi.page.groups.music.radio.RadioTab;
+import com.kilinochi.page.music.radio.RadioTab;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;

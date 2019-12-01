@@ -1,4 +1,4 @@
-import com.kilinochi.page.groups.music.MusicPage;
+import com.kilinochi.page.music.MusicPage;
 import org.junit.Test;
 
 import static com.codeborne.selenide.Selenide.open;
