@@ -5,17 +5,22 @@ import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
 public final class RadioStationCard {
+    
+    private static final By PLAY_MUSIC_LOCATOR = By.cssSelector(".__ekai4w");
 
-    private static final By PLAY_MUSIC_LOCATOR = By.xpath("//*[@icon ='play']");
+    private final SelenideElement root;
 
-    private final SelenideElement selenideElement;
+    public RadioStationCard(SelenideElement root) {
+        this.root = root;
+    }
 
-    public RadioStationCard(SelenideElement selenideElement) {
-        this.selenideElement = selenideElement;
+    public RadioStationCard withName(final String name) {
+        root.shouldHave(Condition.text(name));
+        return this;
     }
 
     public RadioStationCard playRadio() {
-        selenideElement.find(PLAY_MUSIC_LOCATOR).waitUntil(Condition.visible, 8000).click();
+        root.find(PLAY_MUSIC_LOCATOR).waitUntil(Condition.visible, 8000).click();
         return this;
     }
 }

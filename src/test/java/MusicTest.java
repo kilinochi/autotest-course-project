@@ -10,6 +10,8 @@ public final class MusicTest extends BaseTest {
     public void playRadio() {
         final MusicPage musicPage = (MusicPage) userPage.toolbar().musicPage();
         final List<RadioStationCard> stationCards = musicPage.radioTab().radioStations();
-        stationCards.get(0).playRadio();
+        stationCards.stream()
+                .map(radioStationCard -> radioStationCard.withName("Альтернативный рок"))
+                .findFirst().get().playRadio();
     }
 }
