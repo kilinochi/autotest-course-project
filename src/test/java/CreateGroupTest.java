@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-public final class CreateGroup extends BaseTest {
+public final class CreateGroupTest extends BaseTest {
 
     @Test
     public void createGroup() {
@@ -22,10 +22,5 @@ public final class CreateGroup extends BaseTest {
                 .selectSubcategory(GroupPage.Subcategory.AUTO)
                 .groupPage()
                 .check();
-    }
-
-    @Test
-    public void deleteGroup() {
-
     }
 }

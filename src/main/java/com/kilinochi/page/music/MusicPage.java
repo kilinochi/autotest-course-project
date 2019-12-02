@@ -10,17 +10,16 @@ import static com.codeborne.selenide.Selenide.$;
 public final class MusicPage implements Page {
 
     private static final By RADIO_LOCATOR = By.xpath("//*[@data-l ='t,radio']");
-    private static final By MY_MUSIC_LIBRARY_LOCATOR = By.xpath("//*[@class ='wm-menu_link __3121tz __current __library']");
+    private static final By MY_MUSIC_LIBRARY_LOCATOR = By.xpath("//*[@class ='wm-menu_link __3121tz __library']");
 
     public RadioTab radioTab() {
         $(RADIO_LOCATOR).click();
         return new RadioTab();
     }
 
-    public Page playList() {
+    public MyMusicTab myMusicTab() {
         $(MY_MUSIC_LIBRARY_LOCATOR).click();
-        //
-        return null;
+        return new MyMusicTab();
     }
 
     @Override

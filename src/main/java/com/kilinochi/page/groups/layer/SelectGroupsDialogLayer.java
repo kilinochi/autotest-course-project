@@ -1,7 +1,6 @@
 package com.kilinochi.page.groups.layer;
 
 import com.codeborne.selenide.CollectionCondition;
-import com.codeborne.selenide.SelenideElement;
 import com.kilinochi.page.Layer;
 import com.kilinochi.page.groups.card.GroupPageTypeCard;
 import org.openqa.selenium.By;

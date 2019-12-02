@@ -1,5 +1,5 @@
 package com.kilinochi.page.factory;
 
 public enum  Pages {
-    UserPage, LoginPage, GroupsPage, GroupPage, MusicPage
+    UserPage, LoginPage, GroupsPage, GroupPage, MusicPage, PlaylistPage
 }

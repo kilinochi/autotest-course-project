@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-public final class MusicTest extends BaseTest {
+public final class PlayRadioTest extends BaseTest {
 
     @Test
     public void playRadio() {
@@ -13,10 +13,5 @@ public final class MusicTest extends BaseTest {
         stationCards.stream()
                 .map(radioStationCard -> radioStationCard.withName("Альтернативный рок"))
                 .findFirst().get().playRadio();
-    }
-
-    @Test
-    public void createMusicAlbum() {
-
     }
 }
