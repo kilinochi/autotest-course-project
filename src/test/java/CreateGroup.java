@@ -23,4 +23,9 @@ public final class CreateGroup extends BaseTest {
                 .groupPage()
                 .check();
     }
+
+    @Test
+    public void deleteGroup() {
+
+    }
 }

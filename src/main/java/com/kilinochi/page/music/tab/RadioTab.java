@@ -1,7 +1,7 @@
-package com.kilinochi.page.music.radio;
+package com.kilinochi.page.music.tab;
 
 import com.codeborne.selenide.CollectionCondition;
-import com.kilinochi.page.music.radio.card.RadioStationCard;
+import com.kilinochi.page.music.tab.card.RadioStationCard;
 import org.openqa.selenium.By;
 
 import java.util.ArrayList;

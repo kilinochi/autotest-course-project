@@ -1,5 +1,5 @@
 import com.kilinochi.page.music.MusicPage;
-import com.kilinochi.page.music.radio.card.RadioStationCard;
+import com.kilinochi.page.music.tab.card.RadioStationCard;
 import org.junit.Test;
 
 import java.util.List;
@@ -13,5 +13,10 @@ public final class MusicTest extends BaseTest {
         stationCards.stream()
                 .map(radioStationCard -> radioStationCard.withName("Альтернативный рок"))
                 .findFirst().get().playRadio();
+    }
+
+    @Test
+    public void createMusicAlbum() {
+
     }
 }

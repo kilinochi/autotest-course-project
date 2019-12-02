@@ -1,4 +1,4 @@
-package com.kilinochi.page.music.radio.card;
+package com.kilinochi.page.music.tab.card;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
