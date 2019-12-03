@@ -1,31 +1,43 @@
 package com.kilinochi.page.user.layer;
 
+import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.kilinochi.page.Layer;
 import org.openqa.selenium.By;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public final class MusicLayer implements Layer {
 
-    private static final By MUSIC_LAYER_LOCATOR = By.xpath("//*[@class ='modal-new_cnt js-sticky-cont']");
-    private static final By MUSIC_TRACK_LOCATOR = By.xpath("//*[@data-action ='track']");
+    private static final By MUSIC_TRACK_LOCATOR = By.xpath("//*[@class ='track-two-lines_hld']");
+    private static final By PLACEHOLDER_LOCATOR = By.xpath("//*[@class ='search-input_it it']");
+    private static final By SUBMIT_BUTTON_LOCATOR = By.xpath("//*[@class ='track-two-lines __enabled __idle soh-s js-track __selectable']");
+    private final CreatePostLayer context;
+
 
     private final SelenideElement input;
     private final SelenideElement buttonSubmit;
 
-    public MusicLayer() {
-        final SelenideElement root = $(MUSIC_LAYER_LOCATOR);
-        input = root.find(".search-input_it it").shouldHave(Condition.text("Искать песни на сайте")); // todo - resolve two elements
-        buttonSubmit = root.find(".button-pro __disabled form-actions_yes");
+    public MusicLayer(final CreatePostLayer context) {
+        this.context = context;
+        input = $$(PLACEHOLDER_LOCATOR).get(0);
+        buttonSubmit = $(SUBMIT_BUTTON_LOCATOR);
     }
 
     public MusicLayer findMusic(final String musicName) {
         input.setValue(musicName);
-        $$(MUSIC_TRACK_LOCATOR).stream().limit(2).forEach(SelenideElement::click);
-        buttonSubmit.click();
+        $$(MUSIC_TRACK_LOCATOR).shouldBe(CollectionCondition.sizeNotEqual(0), 8000)
+                .stream().limit(3).forEach(SelenideElement::click);
         return this;
+    }
+
+    public CreatePostLayer createPost() {
+        buttonSubmit.click();
+        return context;
     }
 }

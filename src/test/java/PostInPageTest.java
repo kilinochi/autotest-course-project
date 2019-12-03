@@ -10,8 +10,8 @@ public final class PostInPageTest extends BaseTest {
     public void post() {
         final PostForm form = userPage.postForm();
         final CreatePostLayer postLayer = (CreatePostLayer) form.postLayer();
-     //   postLayer.inputText("First post");
+        postLayer.inputText("First post");
         final MusicLayer musicLayer = postLayer.postMusic();
-        musicLayer.findMusic("Linkin park");
+        musicLayer.findMusic("Linkin park").createPost();
     }
 }
