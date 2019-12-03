@@ -24,5 +24,9 @@ public final class CreatePostLayer implements Layer {
         return this;
     }
 
+    public MusicLayer postMusic() {
+        musicElement.click();
+        return new MusicLayer();
+    }
 
 }
