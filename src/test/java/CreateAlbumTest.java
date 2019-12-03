@@ -3,7 +3,7 @@ import com.kilinochi.page.music.PlaylistPage;
 import com.kilinochi.page.music.tab.MyMusicTab;
 import org.junit.Test;
 
-public class CreateAlbumTest extends BaseTest {
+public final class CreateAlbumTest extends BaseTest {
 
     @Test
     public void createAlbum() {
