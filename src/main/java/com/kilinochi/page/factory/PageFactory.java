@@ -19,6 +19,10 @@ public interface PageFactory {
                 return new MusicPageFactory();
             case PlaylistPage:
                 return new PlaylistPageFactory();
+            case VideoPage:
+                return new VideoPageFactory();
+            case GamesPage:
+                return new GamesPageFactory();
             default:
                 throw new IllegalArgumentException();
         }

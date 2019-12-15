@@ -14,7 +14,7 @@ public final class LoginPage implements Page {
 
     private static final By LOGIN_LOCATOR = By.name("st.email");
     private static final By PASSWORD_LOCATOR = By.name("st.password");
-    private static final By SUBMIT_LOCATOR = By.xpath(".//input[@data-l='t,sign_in']");
+    private static final By SUBMIT_LOCATOR = By.xpath("//*[@type=\"submit\"]");
 
     public LoginPage() {
 
