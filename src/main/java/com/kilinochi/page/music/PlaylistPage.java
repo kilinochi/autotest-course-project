@@ -19,10 +19,12 @@ public final class PlaylistPage implements Page {
 
     private final SelenideElement inputName;
     private final SelenideElement createAlbumButton;
+    private final SelenideElement searchMusicPlaceholder;
 
 
     public PlaylistPage() {
         inputName = $(INPUT_NAME_PLACEHOLDER_SELECTOR);
+        searchMusicPlaceholder = $$(SEARCH_MUSIC_PLACEHOLDER_SELECTOR).get(1);
         createAlbumButton = $(CREATE_ALBUM_BUTTON_SELECTOR);
         check();
     }
@@ -33,7 +35,7 @@ public final class PlaylistPage implements Page {
     }
 
     public PlaylistPage addMusicFromSearch(final String musicName, final int firstNCount) {
-        $$(SEARCH_MUSIC_PLACEHOLDER_SELECTOR).get(1).setValue(musicName);
+        searchMusicPlaceholder.setValue(musicName);
         $$(TRACKS_LOCATOR).shouldHave(CollectionCondition.sizeNotEqual(0), 7000)
                 .stream()
                 .limit(firstNCount)
@@ -44,8 +46,8 @@ public final class PlaylistPage implements Page {
 
     @Override
     public Page check() {
-        String attr = inputName.getAttribute("placeholder");
-        assertEquals("Название сборника", attr);
+        assertEquals("Название сборника", inputName.getAttribute("placeholder"));
+        assertEquals("Поиск", searchMusicPlaceholder.getAttribute("placeholder"));
         return this;
     }
 }
