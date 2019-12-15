@@ -23,6 +23,8 @@ public interface PageFactory {
                 return new VideoPageFactory();
             case GamesPage:
                 return new GamesPageFactory();
+            case MySelfPage:
+                return new MySelfPageFactory();
             default:
                 throw new IllegalArgumentException();
         }
