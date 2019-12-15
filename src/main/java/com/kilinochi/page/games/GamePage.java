@@ -16,8 +16,6 @@ public final class GamePage implements Page {
     public Page fullScreen()  {
         $(FULLSCREEN_BUTTON_SELECTOR)
                 .waitUntil(Condition.visible, 4000).click();
-
-   // selenideElement -> selenideElement.waitUntil(Condition.visible, 1000).click());
         return this;
     }
 

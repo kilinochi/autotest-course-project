@@ -12,8 +12,8 @@ public final class GetGameTest extends BaseTest {
     public void loadGame() throws InterruptedException {
         final GamesPage gamesPage = userPage.gamesPage();
         final GamesCasualPage gamesCasualPage = gamesPage.toCasualPage();
-        final GamePage gamePage = gamesCasualPage.getCards().stream().findFirst().get().openGame();
-
+        final GamePage gamePage = gamesCasualPage.getFirstNCards(3).stream().findFirst().get().openGame();
+        gamePage.fullScreen();
         //final  GamesPage p= r.gamePage();
 
         //final Page gpa = gamePage.fullScreen();

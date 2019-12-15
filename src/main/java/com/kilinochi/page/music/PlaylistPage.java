@@ -26,7 +26,7 @@ public final class PlaylistPage implements Page {
 
     public PlaylistPage addMusicFromSearch(final String musicName, final int firstNCount) {
         $$(SEARCH_MUSIC_PLACEHOLDER_SELECTOR).get(1).setValue(musicName);
-        $$(TRACKS_LOCATOR).shouldHave(CollectionCondition.sizeNotEqual(0), 7000) // todo - add scroll
+        $$(TRACKS_LOCATOR).shouldHave(CollectionCondition.sizeNotEqual(0), 7000)
                 .stream()
                 .limit(firstNCount)
                 .forEach(selenideElement -> selenideElement.waitUntil(Condition.visible, 1000).scrollTo().click());

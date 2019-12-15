@@ -31,6 +31,7 @@ public final class LoginPage implements Page {
 
     @Override
     public Page check() {
+        // проверить что ты на этой странице
         return this;
     }
 }
