@@ -16,12 +16,12 @@ public final class MySelfTest extends BaseTest {
     @Test
     public void createWork() {
 
-        final MySelfPage mySelfPage = userPage.mySelfPage();
-        final MySelfTab mySelfTab =  mySelfPage.mySelfTab();
+      //  final MySelfPage mySelfPage = userPage.mySelfPage();
+    //    final MySelfTab mySelfTab =  mySelfPage.mySelfTab();
         //final List<GroupPageTypeCard> typeCards = dialogLayer.typeCards();
         //final GroupPageTypeCard typeCard = typeCards.get(0);
         //final ModalDialogLayer modalDialogLayer = (ModalDialogLayer) typeCard.dialogLayer();
-        mySelfTab.inputName("Одно");
+   //     mySelfTab.inputName("Одно");
 
        // .inputPosition("Чикуня");
         //.sendDescription("Very cool group")

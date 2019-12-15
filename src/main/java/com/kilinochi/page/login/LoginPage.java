@@ -1,5 +1,7 @@
 package com.kilinochi.page.login;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import com.kilinochi.page.Page;
 import com.kilinochi.page.user.UserPage;
 import com.kilinochi.page.factory.PageFactory;
@@ -16,14 +18,22 @@ public final class LoginPage implements Page {
     private static final By PASSWORD_LOCATOR = By.name("st.password");
     private static final By SUBMIT_LOCATOR = By.xpath("//*[@type=\"submit\"]");
 
-    public LoginPage() {
 
+    private final SelenideElement loginInput;
+    private final SelenideElement passwordInput;
+    private final SelenideElement submitButton;
+
+    public LoginPage() {
+        loginInput = $(LOGIN_LOCATOR);
+        passwordInput = $(PASSWORD_LOCATOR);
+        submitButton = $(SUBMIT_LOCATOR);
+        check();
     }
 
     public UserPage login() {
-        $(LOGIN_LOCATOR).setValue(TECHO_BOT_1_LOGIN);
-        $(PASSWORD_LOCATOR).setValue(PASSWORD);
-        $(SUBMIT_LOCATOR).click();
+        loginInput.setValue(TECHO_BOT_1_LOGIN);
+        passwordInput.setValue(PASSWORD);
+        submitButton.click();
         final PageFactory pageFactory
                 = PageFactory.getFactory(Pages.UserPage);
         return (UserPage) pageFactory.create();
@@ -31,7 +41,9 @@ public final class LoginPage implements Page {
 
     @Override
     public Page check() {
-        // проверить что ты на этой странице
+        loginInput.shouldBe(Condition.visible);
+        passwordInput.shouldBe(Condition.visible);
+        submitButton.shouldHave(Condition.matchesText("Войти"));
         return this;
     }
 }
