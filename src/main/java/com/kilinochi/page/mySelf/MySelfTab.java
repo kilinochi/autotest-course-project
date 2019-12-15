@@ -1,52 +1,52 @@
 package com.kilinochi.page.mySelf;
 
-
 import com.codeborne.selenide.SelenideElement;
 import com.kilinochi.page.Layer;
 import com.kilinochi.page.Page;
-import com.kilinochi.page.factory.PageFactory;
-import com.kilinochi.page.factory.Pages;
-import com.kilinochi.page.mySelf.MySelfPage;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
+import static org.junit.Assert.assertEquals;
 
-public final class MySelfTab  implements Layer {
+public final class MySelfTab  implements Page {
 
-    private static final By NAME_LOCATOR = By.name("fr.name");
     private static final By JOB_LOCATOR = By.name("st.layer.jobText");
-    private static final By JOB2_LOCATOR = By.xpath("//*[@id=\"gwt-uid-2299\"]");
+    private static final By JOB2_LOCATOR = By.xpath("//*[@href=\"/profile/577417727191/about?st.cmd=userProfile&st.layer.cmd=PopLayerClose\"]");
     private static final By JOBPOSITION_LOCATOR = By.name("st.layer.jobPositionText");
+    private static final By SUBMIT_LOCATOR = By.name("button_join");
+    public static final By JOB_OK = By.xpath("//*[@hrefattrs=\"st.cmd=userProfile&cmd=PopLayer&st.layer.cmd=PopLayerJoinCommunity&st.layer._stab=5&st.layer.block=AboutUserRB&st._aid=MoreCommPromo_addOffice\"]");
 
-    private final SelenideElement Name;
+
     private final SelenideElement jobName;
     private final SelenideElement jobName2;
     private final SelenideElement jobPosition;
+    private final SelenideElement jobSubmit;
+    private final SelenideElement jobOk;
 
      public MySelfTab() {
-       Name = $(NAME_LOCATOR);
        jobName = $(JOB_LOCATOR);
        jobName2 = $(JOB2_LOCATOR);
        jobPosition = $(JOBPOSITION_LOCATOR);
+       jobSubmit = $(SUBMIT_LOCATOR);
+       jobOk = $(JOB_OK);
      }
 
-    // public MySelfTab inputName(final String name) {
-    //    Name.setValue(name);
-     //   return this;
-    // }
-
-    public MySelfTab inputName(final String name) {
+    public void inputName() {
+        sleep(1000);
+        jobName2.click();
+    }
+    public MySelfTab inputName2(final String name) {
         jobName.setValue(name);
-        //$("#submit").click();
-        // executeJavaScript("return Ext.ComponentQuery.query(component)");
-        sleep(3000);
-        return this;
+        sleep(1000);
+        jobName.pressEnter();
+        jobPosition.setValue("Чикуня");
+        jobSubmit.click();
+        return new MySelfTab();
     }
-
-    public MySelfTab inputPosition(final String name) {
-        jobPosition.setValue(name);
-        return this;
+    @Override
+    public Page check() {
+        assertEquals("работа", jobOk.getText());
+        return null;
     }
-
-
 }

@@ -2,6 +2,7 @@ package com.kilinochi.page.user;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.kilinochi.page.mySelf.MySelfPage;
 import com.kilinochi.page.user.form.PostForm;
 import com.kilinochi.toolbar.Toolbar;
 import com.kilinochi.page.Page;
@@ -17,8 +18,10 @@ public final class UserPage implements Page {
 
     private static final By GROUPS_LOCATOR = By.xpath("//*[@hrefattrs=\"st.cmd=userAltGroup&st._aid=NavMenu_User_AltGroups\"]");
     private static final By GAMES_LOCATOR = By.xpath("//*[@hrefattrs=\"st.cmd=appsShowcaseHD&st._aid=NavMenu_User_Apps\"]");
+    private static final By MYSELF_LOCATOR = By.xpath("//*[@hrefattrs=\"st.cmd=userProfile&st._aid=NavMenu_User_SelfProfile\"]");
     private static final By NAV_BAR_LOCATOR = By.xpath("//*[@class ='nav-side __navigation']");
     private static final By TOOLBAR_LOCATOR = By.xpath("//*[@class ='toolbar']");
+    private static final By MORE_LOCATOR = By.xpath("//*[@data-l=\"t,toggler\"]");
 
     public GroupsPage groups() {
         $(GROUPS_LOCATOR).click();
@@ -33,6 +36,16 @@ public final class UserPage implements Page {
                 .getFactory(Pages.GamesPage)
                 .create();
     }
+
+
+    public MySelfPage mySelfPage() {
+        $(MORE_LOCATOR).click();
+        $(MYSELF_LOCATOR).click();
+        return (MySelfPage) PageFactory
+                .getFactory(Pages.MySelfPage)
+                .create();
+    }
+
 
     public PostForm postForm() {
         return new PostForm(this);

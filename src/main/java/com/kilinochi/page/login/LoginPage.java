@@ -9,7 +9,7 @@ import com.kilinochi.page.factory.Pages;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.kilinochi.ConstUtils.TECHO_BOT_1_LOGIN;
+import static com.kilinochi.ConstUtils.TECHO_BOT_2_LOGIN;
 import static com.kilinochi.ConstUtils.PASSWORD;
 
 public final class LoginPage implements Page {
@@ -31,7 +31,7 @@ public final class LoginPage implements Page {
     }
 
     public UserPage login() {
-        loginInput.setValue(TECHO_BOT_1_LOGIN);
+        loginInput.setValue(TECHO_BOT_2_LOGIN);
         passwordInput.setValue(PASSWORD);
         submitButton.click();
         final PageFactory pageFactory

@@ -2,7 +2,6 @@ package com.kilinochi.page.games;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.StaleElementReferenceException;
 
 public class GameCard {
 
@@ -14,8 +13,7 @@ public class GameCard {
     }
 
     public GamePage openGame() {
-        SelenideElement link = root.find(".games-card_sect_a");
-        link.click();
+        root.waitUntil(Condition.visible, 4000).click();
         return new GamePage();
     }
 
