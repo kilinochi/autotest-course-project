@@ -1,5 +1,7 @@
 package com.kilinochi.page.music;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import com.kilinochi.page.Page;
 import com.kilinochi.page.music.tab.MyMusicTab;
 import com.kilinochi.page.music.tab.RadioTab;
@@ -11,19 +13,29 @@ public final class MusicPage implements Page {
 
     private static final By RADIO_LOCATOR = By.xpath("//*[@data-l ='t,radio']");
     private static final By MY_MUSIC_LIBRARY_LOCATOR = By.xpath("//*[@class ='wm-menu_link __3121tz __library']");
+    private final SelenideElement radioElement;
+    private final SelenideElement myMusicLibraryElement;
+
+    public MusicPage() {
+        radioElement = $(RADIO_LOCATOR);
+        myMusicLibraryElement = $(MY_MUSIC_LIBRARY_LOCATOR);
+        check();
+    }
 
     public RadioTab radioTab() {
-        $(RADIO_LOCATOR).click();
+        radioElement.click();
         return new RadioTab();
     }
 
     public MyMusicTab myMusicTab() {
-        $(MY_MUSIC_LIBRARY_LOCATOR).click();
+        $(MY_MUSIC_LIBRARY_LOCATOR).shouldHave(Condition.text("Моя музыка")).click();
         return new MyMusicTab();
     }
 
     @Override
     public Page check() {
-        return null;
+        myMusicLibraryElement.shouldBe(Condition.visible);
+        radioElement.shouldBe(Condition.visible);
+        return this;
     }
 }

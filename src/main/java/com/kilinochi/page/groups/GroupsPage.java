@@ -1,5 +1,7 @@
 package com.kilinochi.page.groups;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import com.kilinochi.page.Layer;
 import com.kilinochi.page.Page;
 import com.kilinochi.page.groups.layer.SelectGroupsDialogLayer;
@@ -14,8 +16,13 @@ public final class GroupsPage implements Page {
     private static final By SEARCH_GROUPS_PLACEHOLDER = By.xpath("//*[@id ='hook_Block_UserGroupSearch2QueryBlock']");
     private static final By OWNER_SIDEBAR_LOCATOR = By.xpath("//*[@hrefattrs =\"st.cmd=userGroups&st._aid=GroupsSubMenu_User_MyGroupsNav_Header\"]");
 
+    private final SelenideElement createGroupElement;
+
     private GroupsSideBar ownerSideBar;
 
+    public GroupsPage() {
+        createGroupElement = $(CREATE_GROUP_LOCATOR);
+    }
 
     public GroupsSideBar myGroups() {
         $(OWNER_SIDEBAR_LOCATOR).click();
@@ -37,6 +44,7 @@ public final class GroupsPage implements Page {
 
     @Override
     public Page check() {
+        createGroupElement.shouldHave(Condition.text("Создать группу"));
         return this;
     }
 }

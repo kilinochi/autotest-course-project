@@ -1,5 +1,6 @@
 package com.kilinochi.toolbar;
 
+import com.codeborne.selenide.Condition;
 import com.kilinochi.page.Page;
 import com.kilinochi.page.factory.PageFactory;
 import com.kilinochi.page.factory.Pages;
@@ -26,12 +27,12 @@ public final class Toolbar {
     }
 
     public Page musicPage() {
-        $(MUSIC_LOCATOR).click();
+        $(MUSIC_LOCATOR).shouldHave(Condition.text("Музыка")).click();
         return PageFactory.getFactory(Pages.MusicPage).create();
     }
 
     public VideoPage videoPage() {
-        $(VIDEO_LOCATOR).click();
+        $(VIDEO_LOCATOR).shouldHave(Condition.text("Видео")).click();
         return (VideoPage) PageFactory.getFactory(Pages.VideoPage).create();
     }
 }

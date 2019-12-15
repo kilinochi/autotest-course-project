@@ -28,12 +28,12 @@ public final class CreatePostLayer implements Layer {
     }
 
     public CreatePostLayer inputText(final String text) {
-        placeholder.setValue(text);
+        placeholder.shouldBe(Condition.visible).setValue(text);
         return this;
     }
 
     public MusicLayer postMusic() {
-        musicElement.click();
+        musicElement.shouldBe(Condition.visible).click();
         return new MusicLayer(this);
     }
 
