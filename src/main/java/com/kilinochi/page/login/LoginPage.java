@@ -11,6 +11,7 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.$;
 import static com.kilinochi.ConstUtils.TECHO_BOT_2_LOGIN;
 import static com.kilinochi.ConstUtils.PASSWORD;
+import static org.junit.Assert.assertEquals;
 
 public final class LoginPage implements Page {
 
@@ -43,7 +44,8 @@ public final class LoginPage implements Page {
     public Page check() {
         loginInput.shouldBe(Condition.visible);
         passwordInput.shouldBe(Condition.visible);
-        submitButton.shouldHave(Condition.matchesText("Войти"));
+        String submitAttr = submitButton.attr("value");
+        assertEquals("Войти", submitAttr);
         return this;
     }
 }
