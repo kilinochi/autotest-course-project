@@ -2,7 +2,6 @@ package com.kilinochi.page.music;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import com.kilinochi.page.Page;
 import com.kilinochi.page.music.tab.MyMusicTab;
 import com.kilinochi.page.music.tab.RadioTab;
 import org.openqa.selenium.By;

@@ -1,6 +1,5 @@
 package com.kilinochi.page.games;
 
-import com.kilinochi.page.Page;
 import org.openqa.selenium.By;
 
 public final class GamePage implements Page {

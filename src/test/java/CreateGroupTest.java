@@ -11,7 +11,7 @@ public final class CreateGroupTest extends BaseTest {
 
     @Test
     public void createGroup() {
-        final GroupsPage groupsPage = (GroupsPage) userPage.groups().check();
+        final GroupsPage groupsPage = userPage.groups();
         final SelectGroupsDialogLayer dialogLayer = (SelectGroupsDialogLayer) groupsPage.dialogLayer();
         final List<GroupPageTypeCard> typeCards = dialogLayer.typeCards();
         final GroupPageTypeCard typeCard = typeCards.get(0);
@@ -20,7 +20,6 @@ public final class CreateGroupTest extends BaseTest {
                 .sendDescription("Very cool group")
                 .selectRestriction(true)
                 .selectSubcategory(GroupPage.Subcategory.AUTO)
-                .groupPage()
-                .check();
+                .groupPage();
     }
 }

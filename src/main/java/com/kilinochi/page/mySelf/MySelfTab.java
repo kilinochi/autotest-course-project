@@ -1,8 +1,6 @@
 package com.kilinochi.page.mySelf;
 
 import com.codeborne.selenide.SelenideElement;
-import com.kilinochi.page.Layer;
-import com.kilinochi.page.Page;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;

@@ -1,50 +1,35 @@
 package com.kilinochi.page.groups;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.kilinochi.page.BasePage;
 import com.kilinochi.page.Layer;
-import com.kilinochi.page.Page;
 import com.kilinochi.page.groups.layer.SelectGroupsDialogLayer;
-import com.kilinochi.page.groups.sideBar.GroupsSideBar;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public final class GroupsPage implements Page {
+public final class GroupsPage extends BasePage {
 
     private static final By CREATE_GROUP_LOCATOR = By.className("create-group");
     private static final By SEARCH_GROUPS_PLACEHOLDER = By.xpath("//*[@id ='hook_Block_UserGroupSearch2QueryBlock']");
     private static final By OWNER_SIDEBAR_LOCATOR = By.xpath("//*[@hrefattrs =\"st.cmd=userGroups&st._aid=GroupsSubMenu_User_MyGroupsNav_Header\"]");
 
-    private final SelenideElement createGroupElement;
-
-    private GroupsSideBar ownerSideBar;
+    private SelenideElement createGroupElement;
 
     public GroupsPage() {
+        super();
         createGroupElement = $(CREATE_GROUP_LOCATOR);
     }
 
-    public GroupsSideBar myGroups() {
-        $(OWNER_SIDEBAR_LOCATOR).click();
-        ownerSideBar = new GroupsSideBar();
-        return ownerSideBar;
-    }
-
     public Layer dialogLayer() {
-        $(CREATE_GROUP_LOCATOR).click();
+        click(CREATE_GROUP_LOCATOR);
         return new SelectGroupsDialogLayer();
     }
 
-    public GroupsPage deleteAllGroups() {
-        ownerSideBar
-                .myGroupsCards()
-                .forEach(myGroupsCard -> myGroupsCard.group().deleteGroup());
-        return this;
-    }
-
     @Override
-    public Page check() {
-        createGroupElement.shouldHave(Condition.text("Создать группу"));
-        return this;
+    protected void check() {
+        createGroupElement =
+                explicitWaitVisible(CREATE_GROUP_LOCATOR);
+        matchText(createGroupElement, "Создать группу");
     }
 }

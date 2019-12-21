@@ -2,7 +2,6 @@ package com.kilinochi.page.games;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.SelenideElement;
-import com.kilinochi.page.Page;
 import org.openqa.selenium.By;
 
 import java.util.ArrayList;

@@ -1,6 +1,5 @@
 package com.kilinochi.page.video;
 
-import com.kilinochi.page.Page;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;

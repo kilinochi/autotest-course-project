@@ -1,15 +1,11 @@
 package com.kilinochi.toolbar;
 
-import com.codeborne.selenide.Condition;
-import com.kilinochi.page.Page;
-import com.kilinochi.page.factory.PageFactory;
-import com.kilinochi.page.factory.Pages;
+import com.kilinochi.BaseElement;
+import com.kilinochi.page.music.MusicPage;
 import com.kilinochi.page.video.VideoPage;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
-
-public final class Toolbar {
+public final class Toolbar extends BaseElement {
 
     private static Toolbar instance;
     private static final By MUSIC_LOCATOR = By.xpath("//*[@id ='hook_Block_MusicToolbarButton']");
@@ -26,13 +22,13 @@ public final class Toolbar {
         return instance;
     }
 
-    public Page musicPage() {
-        $(MUSIC_LOCATOR).shouldHave(Condition.text("Музыка")).click();
-        return PageFactory.getFactory(Pages.MusicPage).create();
+    public MusicPage musicPage() {
+        click(MUSIC_LOCATOR);
+        return new MusicPage();
     }
 
     public VideoPage videoPage() {
-        $(VIDEO_LOCATOR).shouldHave(Condition.text("Видео")).click();
-        return (VideoPage) PageFactory.getFactory(Pages.VideoPage).create();
+        click(VIDEO_LOCATOR);
+        return new VideoPage();
     }
 }

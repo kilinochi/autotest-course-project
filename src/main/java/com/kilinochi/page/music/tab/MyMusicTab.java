@@ -1,7 +1,6 @@
 package com.kilinochi.page.music.tab;
 
 import com.codeborne.selenide.Condition;
-import com.kilinochi.page.Page;
 import com.kilinochi.page.factory.PageFactory;
 import com.kilinochi.page.factory.Pages;
 import org.openqa.selenium.By;

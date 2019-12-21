@@ -1,11 +1,13 @@
-import com.kilinochi.page.factory.PageFactory;
-import com.kilinochi.page.factory.Pages;
 import com.kilinochi.page.login.LoginPage;
 import com.kilinochi.page.user.UserPage;
 import com.kilinochi.toolbar.Toolbar;
+import org.junit.After;
 import org.junit.Before;
 
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
+import static com.kilinochi.ConstUtils.TECHO_BOT_1_LOGIN;
+import static com.kilinochi.ConstUtils.PASSWORD;
 
 public abstract class BaseTest {
 
@@ -16,10 +18,16 @@ public abstract class BaseTest {
     @Before
     public void setUp() {
         open("https://ok.ru/");
-        loginPage = (LoginPage) PageFactory
-                .getFactory(Pages.LoginPage)
-                .create().check();
-        userPage = (UserPage) loginPage.login().check();
+        loginPage = new LoginPage();
+        userPage = loginPage
+                .withLogin(TECHO_BOT_1_LOGIN)
+                .withPassword(PASSWORD)
+                .loginToOK();
         toolbar = userPage.toolbar();
+    }
+
+    @After
+    public void clear(){
+        close();
     }
 }

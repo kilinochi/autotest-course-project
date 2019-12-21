@@ -1,15 +1,17 @@
 package com.kilinochi.page.group;
 
-import com.kilinochi.page.Page;
+import com.kilinochi.page.BasePage;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
-
-public final class GroupPage implements Page {
+public final class GroupPage extends BasePage {
 
     private static final By SETTINGS_SELECTOR = By.xpath("//*[ @class ='u-menu_li expand-action-item']");
     private static final By DELETE_GROUP_SELECTOR = By.xpath("//*[@class ='u-menu_li __divided __custom']");
     private static final By DELETE_BUTTON_SELECTOR = By.xpath("//*[@id ='hook_FormButton_button_delete']");
+
+    public GroupPage() {
+        super();
+    }
 
     private String groupId;
 
@@ -17,15 +19,9 @@ public final class GroupPage implements Page {
         return groupId;
     }
 
-    public void deleteGroup() {
-        $(SETTINGS_SELECTOR).click();
-        $(DELETE_GROUP_SELECTOR).click();
-        $(DELETE_BUTTON_SELECTOR).click();
-    }
-
     @Override
-    public Page check() {
-        return this;
+    protected void check() {
+
     }
 
     public enum Subcategory {
