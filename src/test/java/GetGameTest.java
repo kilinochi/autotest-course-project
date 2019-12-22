@@ -13,6 +13,5 @@ public final class GetGameTest extends BaseTest {
         final GamesCasualPage gamesCasualPage = gamesPage.toCasualPage();
         final GamePage gamePage = gamesCasualPage.getCards().stream().findFirst().get().openGame();
         sleep(4000);
-        gamePage.check();
     }
 }

@@ -14,6 +14,5 @@ public final class MySelfTest extends BaseTest {
         final MySelfTab mySelfTab =  mySelfPage.mySelfTab();
         mySelfTab.inputName2("Однокласс");
         sleep(2000);
-        mySelfTab.check();
     }
 }

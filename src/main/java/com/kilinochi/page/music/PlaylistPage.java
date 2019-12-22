@@ -1,8 +1,13 @@
 package com.kilinochi.page.music;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import com.kilinochi.page.BasePage;
+import com.kilinochi.page.user.UserPage;
 import org.openqa.selenium.By;
+
+import java.util.stream.Collectors;
+
 import static org.junit.Assert.assertEquals;
 
 public final class PlaylistPage extends BasePage {
@@ -21,14 +26,14 @@ public final class PlaylistPage extends BasePage {
         return this;
     }
 
-    public PlaylistPage addMusicFromSearch(final String musicName, final int firstNCount) {
-        searchElementsListNotEmpty(SEARCH_MUSIC_PLACEHOLDER_SELECTOR).get(0).setValue(musicName);
+    public MusicAlbumPage addMusicFromSearch(final String musicName, final int countMusics) {
+        searchElementsListNotEmpty(SEARCH_MUSIC_PLACEHOLDER_SELECTOR).get(1).setValue(musicName);
         searchElementsListNotEmpty(TRACKS_LOCATOR)
                 .stream()
-                .limit(firstNCount)
+                .limit(countMusics)
                 .forEach(selenideElement -> selenideElement.waitUntil(Condition.visible, 1000).scrollTo().click());
         click(CREATE_ALBUM_BUTTON_SELECTOR);
-        return this;
+        return new MusicAlbumPage();
     }
 
     @Override

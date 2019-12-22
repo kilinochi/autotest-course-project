@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import com.codeborne.selenide.Condition;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
@@ -41,6 +42,15 @@ public class BaseElement {
     }
 
     protected List<SelenideElement> searchElementsListNotEmpty(By locator) {
-        return $$(locator).shouldBe(CollectionCondition.sizeNotEqual(0));
+        return $$(locator).shouldHave(CollectionCondition.sizeNotEqual(0), 7000);
+    }
+
+    protected boolean isElementVisible(By locator) {
+        try {
+            explicitWaitVisible(locator);
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 }

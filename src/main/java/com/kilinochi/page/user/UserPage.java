@@ -12,9 +12,10 @@ public final class UserPage extends BasePage {
 
     private static final By GROUPS_LOCATOR = By.xpath("//*[@hrefattrs=\"st.cmd=userAltGroup&st._aid=NavMenu_User_AltGroups\"]");
     private static final By GAMES_LOCATOR = By.xpath("//*[@hrefattrs=\"st.cmd=appsShowcaseHD&st._aid=NavMenu_User_Apps\"]");
-    private static final By MYSELF_LOCATOR = By.xpath("//*[@hrefattrs=\"st.cmd=userProfile&st._aid=NavMenu_User_SelfProfile\"]");
+   // private static final By MYSELF_LOCATOR = By.xpath("//*[@hrefattrs=\"st.cmd=userProfile&st._aid=NavMenu_User_SelfProfile\"]");
     private static final By NAV_BAR_LOCATOR = By.xpath("//*[@class ='nav-side __navigation']");
     private static final By MORE_LOCATOR = By.xpath("//*[@data-l=\"t,toggler\"]");
+    private static final By MAIN_POST_LOCATOR = By.xpath("//*[@id ='hook_Block_MainFeedsNewFeed']");
 
     public UserPage() {
         super();
@@ -33,10 +34,9 @@ public final class UserPage extends BasePage {
 
     public MySelfPage mySelfPage() {
         click(MORE_LOCATOR);
-        click(MYSELF_LOCATOR);
+     //   click(MYSELF_LOCATOR);
         return new MySelfPage();
     }
-
 
     public PostForm postForm() {
         return new PostForm(this);
@@ -49,7 +49,7 @@ public final class UserPage extends BasePage {
     @Override
     protected void check() {
         explicitWaitVisible(GROUPS_LOCATOR);
-        explicitWaitVisible(MYSELF_LOCATOR);
+     //   explicitWaitVisible(MYSELF_LOCATOR);
         explicitWaitVisible(NAV_BAR_LOCATOR);
     }
 }
