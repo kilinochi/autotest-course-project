@@ -2,7 +2,7 @@ package com.kilinochi.page.user;
 
 import com.kilinochi.page.BasePage;
 import com.kilinochi.page.mySelf.MySelfPage;
-import com.kilinochi.page.user.form.PostForm;
+import com.kilinochi.page.user.layer.CreatePostLayer;
 import com.kilinochi.toolbar.Toolbar;
 import com.kilinochi.page.groups.GroupsPage;
 import com.kilinochi.page.games.GamesPage;
@@ -16,6 +16,7 @@ public final class UserPage extends BasePage {
     private static final By NAV_BAR_LOCATOR = By.xpath("//*[@class ='nav-side __navigation']");
     private static final By MORE_LOCATOR = By.xpath("//*[@data-l=\"t,toggler\"]");
     private static final By MAIN_POST_LOCATOR = By.xpath("//*[@id ='hook_Block_MainFeedsNewFeed']");
+    private static final By POST_FORM_LOCATOR_INPUT = By.xpath(".//*[@class ='pf-head_cnt']");
 
     public UserPage() {
         super();
@@ -38,8 +39,9 @@ public final class UserPage extends BasePage {
         return new MySelfPage();
     }
 
-    public PostForm postForm() {
-        return new PostForm(this);
+    public CreatePostLayer clickToCreatePostLocator() {
+        click(POST_FORM_LOCATOR_INPUT);
+        return new CreatePostLayer();
     }
 
     public Toolbar getToolBar() {
@@ -49,6 +51,7 @@ public final class UserPage extends BasePage {
     @Override
     protected void check() {
         explicitWaitVisible(GROUPS_LOCATOR);
+        explicitWaitVisible(POST_FORM_LOCATOR_INPUT);
      //   explicitWaitVisible(MYSELF_LOCATOR);
         explicitWaitVisible(NAV_BAR_LOCATOR);
     }
