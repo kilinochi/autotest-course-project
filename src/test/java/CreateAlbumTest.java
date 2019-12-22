@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public final class MusicAlbumTest extends BaseTest {
+public final class CreateAlbumTest extends BaseTest {
     private static final String ALBUM_NAME = "LINKIN PARK";
     private static final int COUNT_MUSIC_IN_ALBUM = 6;
 
