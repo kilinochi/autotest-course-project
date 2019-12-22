@@ -1,10 +1,11 @@
 package com.kilinochi.page.groups.card;
 
 import com.codeborne.selenide.SelenideElement;
-import com.kilinochi.BaseElement;
+
+import com.kilinochi.page.Card;
 import com.kilinochi.page.groups.layer.ModalDialogLayer;
 
-public final class GroupPageTypeCard extends BaseElement {
+public final class GroupPageTypeCard implements Card {
 
     private final SelenideElement element;
 
@@ -12,7 +13,7 @@ public final class GroupPageTypeCard extends BaseElement {
         this.element = element;
     }
 
-    public ModalDialogLayer dialogLayer() {
+    public ModalDialogLayer selectCreateDialogLayer() {
         element.click();
         return new ModalDialogLayer();
     }

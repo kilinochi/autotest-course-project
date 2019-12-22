@@ -1,10 +1,11 @@
 package com.kilinochi.page.groups.card;
 
 import com.codeborne.selenide.SelenideElement;
-import com.kilinochi.BaseElement;
+
+import com.kilinochi.page.Card;
 import com.kilinochi.page.group.GroupPage;
 
-public final class MyGroupsCard extends BaseElement {
+public final class MyGroupsCard implements Card {
 
     private final SelenideElement element;
 

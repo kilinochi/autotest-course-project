@@ -4,24 +4,26 @@ import com.kilinochi.page.BasePage;
 import org.openqa.selenium.By;
 
 public final class GroupPage extends BasePage {
+    private static final By GROUP_NAME_LOCATOR = By.xpath(".//*[@class ='group-name_t']");
+    private static final By RESTRICTION_LOCATOR = By.xpath(".//*[@class ='group-name_badge']");
 
-    private static final By SETTINGS_SELECTOR = By.xpath("//*[ @class ='u-menu_li expand-action-item']");
-    private static final By DELETE_GROUP_SELECTOR = By.xpath("//*[@class ='u-menu_li __divided __custom']");
-    private static final By DELETE_BUTTON_SELECTOR = By.xpath("//*[@id ='hook_FormButton_button_delete']");
+    private String groupName;
 
     public GroupPage() {
         super();
     }
 
-    private String groupId;
+    public String groupName() {
+        return groupName;
+    }
 
-    public String getGroupId() {
-        return groupId;
+    public boolean isRestrictionGroup() {
+        return isElementVisible(RESTRICTION_LOCATOR);
     }
 
     @Override
     protected void check() {
-
+        groupName = explicitWaitVisible(GROUP_NAME_LOCATOR).find("h1").getText();
     }
 
     public enum Subcategory {

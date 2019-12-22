@@ -14,7 +14,7 @@ public final class GroupsPage extends BasePage {
         super();
     }
 
-    public SelectGroupsDialogLayer dialogLayer() {
+    public SelectGroupsDialogLayer clickToCreateGroupButton() {
         click(CREATE_GROUP_LOCATOR);
         return new SelectGroupsDialogLayer();
     }

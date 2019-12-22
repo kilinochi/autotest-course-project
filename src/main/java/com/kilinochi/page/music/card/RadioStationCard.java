@@ -1,4 +1,5 @@
 package com.kilinochi.page.music.card;
+import com.kilinochi.page.Card;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -9,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public final class RadioStationCard {
+public final class RadioStationCard implements Card {
 
     private static final Logger log = LoggerFactory.getLogger(RadioStationCard.class);
     private static final Pattern PLAYING_MUSIC_PATTER = Pattern.compile("__ekai4w playing");

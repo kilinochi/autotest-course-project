@@ -35,7 +35,7 @@ public final class UserPage extends BasePage {
                 .getText()).collect(Collectors.toList());
     }
 
-    public GroupsPage groups() {
+    public GroupsPage clickToGroupsPage() {
         click(GROUPS_LOCATOR);
         return new GroupsPage();
     }

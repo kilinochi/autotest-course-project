@@ -14,7 +14,7 @@ public final class PlayRadioTest extends BaseTest {
     public void playRadio() {
         final MusicPage musicPage = userPage.getToolBar().musicPage();
         final RadioPage radioPage = musicPage.clickToRadioTab();
-        final List<RadioStationCard> stationCards = radioPage.radioStations();
+        final List<RadioStationCard> stationCards = radioPage.wrapCards();
 
         assertFalse(stationCards.isEmpty());
 
