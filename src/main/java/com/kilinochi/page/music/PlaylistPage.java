@@ -1,12 +1,8 @@
 package com.kilinochi.page.music;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.SelenideElement;
 import com.kilinochi.page.BasePage;
-import com.kilinochi.page.user.UserPage;
 import org.openqa.selenium.By;
-
-import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 

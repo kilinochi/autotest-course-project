@@ -1,11 +1,8 @@
 package com.kilinochi.page.login;
 
-import com.codeborne.selenide.SelenideElement;
 import com.kilinochi.page.BasePage;
 import com.kilinochi.page.user.UserPage;
 import org.openqa.selenium.By;
-
-import static org.junit.Assert.assertEquals;
 
 public final class LoginPage extends BasePage {
 

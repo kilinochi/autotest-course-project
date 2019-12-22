@@ -1,8 +1,6 @@
 package com.kilinochi.page.music;
 
 import com.kilinochi.page.BasePage;
-import com.kilinochi.page.music.tab.MyMusicTab;
-import com.kilinochi.page.music.tab.RadioTab;
 import org.openqa.selenium.By;
 
 public final class MusicPage extends BasePage {
@@ -13,14 +11,14 @@ public final class MusicPage extends BasePage {
         super();
     }
 
-    public RadioTab radioTab() {
+    public RadioPage clickToRadioTab() {
         clickOnDomainTab(MusicDomain.RADIO);
-        return new RadioTab();
+        return new RadioPage();
     }
 
-    public MyMusicTab myMusicTab() {
+    public MyMusicPage clickToMyMusicTab() {
         clickOnDomainTab(MusicDomain.MyMUSIC);
-        return new MyMusicTab();
+        return new MyMusicPage();
     }
 
     @Override

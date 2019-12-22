@@ -1,7 +1,7 @@
 import com.kilinochi.page.music.MusicAlbumPage;
 import com.kilinochi.page.music.MusicPage;
 import com.kilinochi.page.music.PlaylistPage;
-import com.kilinochi.page.music.tab.MyMusicTab;
+import com.kilinochi.page.music.MyMusicPage;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -13,8 +13,8 @@ public final class CreateAlbumTest extends BaseTest {
     @Test
     public void createAlbum() {
         final MusicPage musicPage = userPage.getToolBar().musicPage();
-        final MyMusicTab myMusicTab = musicPage.myMusicTab();
-        final PlaylistPage playlistPage = myMusicTab.playlistPage();
+        final MyMusicPage myMusicPage = musicPage.clickToMyMusicTab();
+        final PlaylistPage playlistPage = myMusicPage.clickToPlaylistPage();
         final MusicAlbumPage musicAlbumPage = playlistPage.inputAlbumName(ALBUM_NAME)
                 .addMusicFromSearch(ALBUM_NAME, COUNT_MUSIC_IN_ALBUM);
         assertEquals(ALBUM_NAME, musicAlbumPage.getAlbumName());
