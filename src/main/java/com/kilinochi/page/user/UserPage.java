@@ -7,6 +7,9 @@ import com.kilinochi.page.groups.GroupsPage;
 import com.kilinochi.page.games.GamesPage;
 import org.openqa.selenium.By;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public final class UserPage extends BasePage {
 
     private static final By GROUPS_LOCATOR = By.xpath("//*[@hrefattrs=\"st.cmd=userAltGroup&st._aid=NavMenu_User_AltGroups\"]");
@@ -16,14 +19,20 @@ public final class UserPage extends BasePage {
     private static final By MORE_LOCATOR = By.xpath("//*[@data-l=\"t,toggler\"]");
     private static final By MAIN_POST_LOCATOR = By.xpath("//*[@id ='hook_Block_MainFeedsNewFeed']");
     private static final By POST_FORM_LOCATOR_INPUT = By.xpath(".//*[@class ='pf-head_cnt']");
-    private static final By FEEDS_POSTS_LOCATOR = By.xpath(".//*[@class ='feed-w']");
+    private static final By MAIN_FEED_POST_LOCATOR = By.xpath(".//*[@id ='hook_Block_MainFeedsNewFeed']");
+    private static final By FEEDS_TEXT = By.xpath(".//*[@class ='media-text_cnt']");
 
     public UserPage() {
         super();
     }
 
     public boolean isFeedsExists() {
-        return isElementVisible(FEEDS_POSTS_LOCATOR);
+        return isElementVisible(MAIN_FEED_POST_LOCATOR);
+    }
+
+    public List<String> getFeedText() {
+        return searchElementsListNotEmpty(FEEDS_TEXT).stream().map(element-> element.find("[data-l]")
+                .getText()).collect(Collectors.toList());
     }
 
     public GroupsPage groups() {

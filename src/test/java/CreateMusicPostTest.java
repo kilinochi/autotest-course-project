@@ -1,6 +1,10 @@
 import com.kilinochi.page.user.CreatePostPage;
 import org.junit.Test;
 
+import java.util.List;
+
+import static org.hamcrest.Matchers.hasItems;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public final class CreateMusicPostTest extends BaseTest {
@@ -24,6 +28,8 @@ public final class CreateMusicPostTest extends BaseTest {
 
         assertTrue(isHavePosts);
 
-                
+        List<String> feedsTexts = userPage.getFeedText();
+
+        assertThat(feedsTexts, hasItems(POST_NAME));
     }
 }
