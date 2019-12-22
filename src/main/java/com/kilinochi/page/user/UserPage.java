@@ -42,7 +42,7 @@ public final class UserPage extends BasePage {
         return new PostForm(this);
     }
 
-    public Toolbar toolbar() {
+    public Toolbar getToolBar() {
         return Toolbar.getInstance();
     }
 

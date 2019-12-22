@@ -2,13 +2,12 @@ package com.kilinochi.page.user.layer;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import com.kilinochi.page.Layer;
 import com.kilinochi.page.user.UserPage;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public final class CreatePostLayer implements Layer {
+public final class CreatePostLayer {
 
     private static final By CREATE_POST_LOCATOR = By.xpath("//*[@id ='hook_Block_MediaTopicLayerBody']");
     private static final By PLACEHOLDER_LOCATOR = By.xpath("//*[@class ='posting_itx emoji-tx h-mod js-ok-e js-posting-itx ok-posting-handler']");

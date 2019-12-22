@@ -5,6 +5,6 @@ public final class AddVideoTest extends BaseTest {
 
     @Test
     public void createVideoUrl() {
-        final VideoPage videoPage = (VideoPage) userPage.toolbar().videoPage();
+        final VideoPage videoPage = (VideoPage) userPage.getToolBar().videoPage();
     }
 }

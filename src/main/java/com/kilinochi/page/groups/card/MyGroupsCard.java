@@ -1,11 +1,10 @@
 package com.kilinochi.page.groups.card;
 
 import com.codeborne.selenide.SelenideElement;
-import com.kilinochi.page.factory.PageFactory;
-import com.kilinochi.page.factory.Pages;
+import com.kilinochi.BaseElement;
 import com.kilinochi.page.group.GroupPage;
 
-public final class MyGroupsCard {
+public final class MyGroupsCard extends BaseElement {
 
     private final SelenideElement element;
 
@@ -15,8 +14,6 @@ public final class MyGroupsCard {
 
     public GroupPage group() {
         element.click();
-        return (GroupPage) PageFactory
-                .getFactory(Pages.GroupPage)
-                .create();
+        return new GroupPage();
     }
 }

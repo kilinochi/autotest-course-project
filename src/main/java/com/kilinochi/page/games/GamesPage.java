@@ -1,11 +1,12 @@
 package com.kilinochi.page.games;
 
 import com.codeborne.selenide.Condition;
+import com.kilinochi.page.BasePage;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public final class GamesPage implements Page {
+public final class GamesPage extends BasePage {
 
     private static final By CASUAL_SELECTOR = By.xpath("//*[@hrefattrs=\"st.cmd=appsShowcaseHD&st.catalog=casual\"]");
 
@@ -18,9 +19,7 @@ public final class GamesPage implements Page {
     }
 
     @Override
-    public Page check() {
+    protected void check() {
         $(CASUAL_SELECTOR).shouldBe(Condition.visible);
-        return this;
     }
-
 }

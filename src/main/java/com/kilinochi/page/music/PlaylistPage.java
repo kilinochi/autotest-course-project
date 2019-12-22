@@ -1,52 +1,41 @@
 package com.kilinochi.page.music;
 
-import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.SelenideElement;
+import com.kilinochi.page.BasePage;
 import org.openqa.selenium.By;
-
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
 import static org.junit.Assert.assertEquals;
 
-public final class PlaylistPage implements Page {
+public final class PlaylistPage extends BasePage {
 
     private static final By INPUT_NAME_PLACEHOLDER_SELECTOR = By.xpath("//*[@class ='input __-wpm3sp']");
     private static final By SEARCH_MUSIC_PLACEHOLDER_SELECTOR = By.xpath("//*[@class ='base-input __ctxujp']");
     private static final By TRACKS_LOCATOR = By.xpath("//*[@class ='wm-track_hld __3xfx9j']");
     private static final By CREATE_ALBUM_BUTTON_SELECTOR = By.xpath("//*[@data-l ='t,submit']");
 
-    private final SelenideElement inputName;
-    private final SelenideElement createAlbumButton;
-    private final SelenideElement searchMusicPlaceholder;
-
-
     public PlaylistPage() {
-        inputName = $(INPUT_NAME_PLACEHOLDER_SELECTOR);
-        searchMusicPlaceholder = $$(SEARCH_MUSIC_PLACEHOLDER_SELECTOR).get(1);
-        createAlbumButton = $(CREATE_ALBUM_BUTTON_SELECTOR);
         check();
     }
 
     public PlaylistPage inputAlbumName(final String name) {
-        inputName.setValue(name);
+        sendText(INPUT_NAME_PLACEHOLDER_SELECTOR, name);
         return this;
     }
 
     public PlaylistPage addMusicFromSearch(final String musicName, final int firstNCount) {
-        searchMusicPlaceholder.setValue(musicName);
-        $$(TRACKS_LOCATOR).shouldHave(CollectionCondition.sizeNotEqual(0), 7000)
+        searchElementsListNotEmpty(SEARCH_MUSIC_PLACEHOLDER_SELECTOR).get(0).setValue(musicName);
+        searchElementsListNotEmpty(TRACKS_LOCATOR)
                 .stream()
                 .limit(firstNCount)
                 .forEach(selenideElement -> selenideElement.waitUntil(Condition.visible, 1000).scrollTo().click());
-        createAlbumButton.shouldHave(Condition.text("Создать")).click();
+        click(CREATE_ALBUM_BUTTON_SELECTOR);
         return this;
     }
 
     @Override
-    public Page check() {
-        assertEquals("Название сборника", inputName.getAttribute("placeholder"));
-        assertEquals("Поиск", searchMusicPlaceholder.getAttribute("placeholder"));
-        return this;
+    protected void check() {
+        matchText(CREATE_ALBUM_BUTTON_SELECTOR, "Создать");
+        explicitWaitVisible(CREATE_ALBUM_BUTTON_SELECTOR);
+        assertEquals("Название сборника", getAttr(INPUT_NAME_PLACEHOLDER_SELECTOR, "placeholder"));
+        assertEquals("Поиск", getAttr(SEARCH_MUSIC_PLACEHOLDER_SELECTOR, "placeholder"));
     }
 }

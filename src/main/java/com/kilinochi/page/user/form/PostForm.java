@@ -2,7 +2,6 @@ package com.kilinochi.page.user.form;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import com.kilinochi.page.Layer;
 import com.kilinochi.page.user.UserPage;
 import com.kilinochi.page.user.layer.CreatePostLayer;
 import org.openqa.selenium.By;
@@ -22,7 +21,7 @@ public final class PostForm {
         this.context = context;
     }
 
-    public Layer postLayer() {
+    public CreatePostLayer postLayer() {
         inputElement.click();
         return new CreatePostLayer(context);
     }

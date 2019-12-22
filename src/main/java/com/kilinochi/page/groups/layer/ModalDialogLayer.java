@@ -1,15 +1,10 @@
 package com.kilinochi.page.groups.layer;
 
-import com.codeborne.selenide.SelenideElement;
-import com.kilinochi.page.Layer;
-import com.kilinochi.page.factory.PageFactory;
-import com.kilinochi.page.factory.Pages;
+import com.kilinochi.page.BasePage;
 import com.kilinochi.page.group.GroupPage;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
-
-public final class ModalDialogLayer implements Layer {
+public final class ModalDialogLayer extends BasePage {
 
     //private static final By GROUPS_SELECT_LOCATOR = By.className("create-group-dialog_i");
     private static final By NAME_GROUP_LOCATOR = By.name("st.layer.name");
@@ -18,46 +13,45 @@ public final class ModalDialogLayer implements Layer {
     private static final By AGE_18_SELECTOR = By.xpath(".//*[@value='18']");
     private static final By CREATE_GROUP_BUTTON = By.name("button_create");
 
-    private final SelenideElement groupName;
-    private final SelenideElement groupDescription;
-    private final SelenideElement subCategory;
-    private final SelenideElement restriction;
-    private final SelenideElement creteGroupButton;
-
     public ModalDialogLayer() {
-        groupName = $(NAME_GROUP_LOCATOR);
-        groupDescription = $(DESCRIPTION_LOCATOR);
-        subCategory = $(CATEGORY_MENU_AUTO);
-        restriction = $(AGE_18_SELECTOR);
-        creteGroupButton = $(CREATE_GROUP_BUTTON);
+        super();
+    }
+
+    @Override
+    protected void check() {
+        explicitWaitPresent(NAME_GROUP_LOCATOR);
+        explicitWaitPresent(DESCRIPTION_LOCATOR);
+        explicitWaitPresent(CATEGORY_MENU_AUTO);
+        explicitWaitPresent(AGE_18_SELECTOR);
+        explicitWaitPresent(CREATE_GROUP_BUTTON);
     }
 
     public ModalDialogLayer inputName(final String name) {
-        groupName.setValue(name);
+        sendText(NAME_GROUP_LOCATOR, name);
         return this;
     }
 
     public ModalDialogLayer sendDescription(final String description) {
-        groupDescription.setValue(description);
+        sendText(DESCRIPTION_LOCATOR, description);
         return this;
     }
 
     public ModalDialogLayer selectSubcategory(final GroupPage.Subcategory subcategory) {
         if (subcategory == GroupPage.Subcategory.AUTO) {
-            subCategory.click();
+            click(CATEGORY_MENU_AUTO);
         }
         return this;
     }
 
     public ModalDialogLayer selectRestriction(final boolean restriction) {
-        if(restriction) {
-            this.restriction.click();
+        if (restriction) {
+            click(AGE_18_SELECTOR);
         }
         return this;
     }
 
-    public Page groupPage() {
-        creteGroupButton.click();
-        return PageFactory.getFactory(Pages.GroupPage).create();
+    public GroupPage groupPage() {
+        click(CREATE_GROUP_BUTTON);
+        return new GroupPage();
     }
 }

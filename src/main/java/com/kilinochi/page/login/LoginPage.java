@@ -13,35 +13,29 @@ public final class LoginPage extends BasePage {
     private static final By PASSWORD_LOCATOR = By.name("st.password");
     private static final By SUBMIT_LOCATOR = By.xpath("//*[@type=\"submit\"]");
 
-    private SelenideElement loginInput;
-    private SelenideElement passwordInput;
-    private SelenideElement submitButton;
-
     public LoginPage() {
         super();
     }
 
     public LoginPage withLogin(String login) {
-        loginInput.setValue(login);
+        sendText(LOGIN_LOCATOR, login);
         return this;
     }
 
     public LoginPage withPassword(String password) {
-        passwordInput.setValue(password);
+        sendText(PASSWORD_LOCATOR, password);
         return this;
     }
 
     public UserPage loginToOK() {
-        submitButton.click();
+        click(SUBMIT_LOCATOR);
         return new UserPage();
     }
 
     @Override
     protected void check() {
-        loginInput = explicitWaitVisible(LOGIN_LOCATOR);
-        passwordInput = explicitWaitVisible(PASSWORD_LOCATOR);
-        submitButton = explicitWaitVisible(SUBMIT_LOCATOR);
-        String submitAttr = submitButton.attr("value");
-        assertEquals("Войти", submitAttr);
+        explicitWaitVisible(LOGIN_LOCATOR);
+        explicitWaitVisible(PASSWORD_LOCATOR);
+        explicitWaitVisible(SUBMIT_LOCATOR);
     }
 }

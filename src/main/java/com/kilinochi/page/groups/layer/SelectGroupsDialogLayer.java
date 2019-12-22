@@ -1,7 +1,7 @@
 package com.kilinochi.page.groups.layer;
 
 import com.codeborne.selenide.CollectionCondition;
-import com.kilinochi.page.Layer;
+import com.kilinochi.page.BasePage;
 import com.kilinochi.page.groups.card.GroupPageTypeCard;
 import org.openqa.selenium.By;
 
@@ -11,11 +11,16 @@ import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Selenide.$$;
 
-public final class SelectGroupsDialogLayer implements Layer {
+public final class SelectGroupsDialogLayer extends BasePage {
 
     private static final By GROUPS_SELECT_LOCATOR = By.className("create-group-dialog_i");
 
     public SelectGroupsDialogLayer() {
+        super();
+    }
+
+    @Override
+    protected void check() {
 
     }
 

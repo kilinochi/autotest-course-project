@@ -23,7 +23,7 @@ public abstract class BaseTest {
                 .withLogin(TECHO_BOT_1_LOGIN)
                 .withPassword(PASSWORD)
                 .loginToOK();
-        toolbar = userPage.toolbar();
+        toolbar = userPage.getToolBar();
     }
 
     @After

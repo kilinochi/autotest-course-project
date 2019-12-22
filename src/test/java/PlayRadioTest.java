@@ -8,7 +8,7 @@ public final class PlayRadioTest extends BaseTest {
 
     @Test
     public void playRadio() {
-        final MusicPage musicPage = (MusicPage) userPage.toolbar().musicPage();
+        final MusicPage musicPage = userPage.getToolBar().musicPage();
         final List<RadioStationCard> stationCards = musicPage.radioTab().radioStations();
         stationCards.stream()
                 .map(radioStationCard -> radioStationCard.withName("Альтернативный рок"))
