@@ -11,7 +11,7 @@ public final class MusicPage extends BasePage {
     private static final By MY_MUSIC_LIBRARY_LOCATOR = By.xpath("//*[@class ='wm-menu_link __3121tz __library']");
 
     public MusicPage() {
-        check();
+        super();
     }
 
     public RadioTab radioTab() {

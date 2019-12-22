@@ -13,7 +13,7 @@ public final class PlaylistPage extends BasePage {
     private static final By CREATE_ALBUM_BUTTON_SELECTOR = By.xpath("//*[@data-l ='t,submit']");
 
     public PlaylistPage() {
-        check();
+        super();
     }
 
     public PlaylistPage inputAlbumName(final String name) {
