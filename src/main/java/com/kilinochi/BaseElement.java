@@ -16,6 +16,10 @@ public class BaseElement {
         explicitWaitVisible(locator).click();
     }
 
+    protected void inputOnPosFromListElements(int pos, By locator, String txt) {
+        searchElementsListNotEmpty(locator).get(0).setValue(txt);
+    }
+
     protected SelenideElement explicitWaitVisible(final By locator) {
         return explicitWait(Condition.visible, locator);
     }
@@ -49,7 +53,7 @@ public class BaseElement {
         try {
             explicitWaitVisible(locator);
             return true;
-        } catch (NoSuchElementException e) {
+        } catch (Exception e) {
             return false;
         }
     }

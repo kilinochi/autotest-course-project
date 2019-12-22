@@ -2,7 +2,6 @@ package com.kilinochi.page.user;
 
 import com.kilinochi.page.BasePage;
 import com.kilinochi.page.mySelf.MySelfPage;
-import com.kilinochi.page.user.layer.CreatePostLayer;
 import com.kilinochi.toolbar.Toolbar;
 import com.kilinochi.page.groups.GroupsPage;
 import com.kilinochi.page.games.GamesPage;
@@ -17,9 +16,14 @@ public final class UserPage extends BasePage {
     private static final By MORE_LOCATOR = By.xpath("//*[@data-l=\"t,toggler\"]");
     private static final By MAIN_POST_LOCATOR = By.xpath("//*[@id ='hook_Block_MainFeedsNewFeed']");
     private static final By POST_FORM_LOCATOR_INPUT = By.xpath(".//*[@class ='pf-head_cnt']");
+    private static final By FEEDS_POSTS_LOCATOR = By.xpath(".//*[@class ='feed-w']");
 
     public UserPage() {
         super();
+    }
+
+    public boolean isFeedsExists() {
+        return isElementVisible(FEEDS_POSTS_LOCATOR);
     }
 
     public GroupsPage groups() {
@@ -39,9 +43,9 @@ public final class UserPage extends BasePage {
         return new MySelfPage();
     }
 
-    public CreatePostLayer clickToCreatePostLocator() {
+    public CreatePostPage clickToCreatePostLocator() {
         click(POST_FORM_LOCATOR_INPUT);
-        return new CreatePostLayer();
+        return new CreatePostPage();
     }
 
     public Toolbar getToolBar() {
