@@ -17,6 +17,3 @@ public final class MySelfPage extends BasePage {
         explicitWaitVisible(WORK_LOCATOR);
     }
 }
-
-
-

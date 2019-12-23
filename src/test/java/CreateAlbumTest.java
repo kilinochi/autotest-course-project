@@ -18,6 +18,6 @@ public final class CreateAlbumTest extends BaseTest {
         final MusicAlbumPage musicAlbumPage = playlistPage.inputAlbumName(ALBUM_NAME)
                 .addMusicFromSearch(ALBUM_NAME, COUNT_MUSIC_IN_ALBUM);
         assertEquals(ALBUM_NAME, musicAlbumPage.getAlbumName());
-        assertEquals(6, musicAlbumPage.getTracks().size());
+        assertEquals(COUNT_MUSIC_IN_ALBUM, musicAlbumPage.getTracks().size());
     }
 }

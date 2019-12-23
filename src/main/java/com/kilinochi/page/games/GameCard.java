@@ -3,8 +3,9 @@ package com.kilinochi.page.games;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.kilinochi.BaseElement;
+import com.kilinochi.page.Card;
 
-public class GameCard extends BaseElement {
+public class GameCard extends BaseElement implements Card {
 
     private SelenideElement root;
     private String gameName;

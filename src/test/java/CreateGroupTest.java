@@ -19,8 +19,8 @@ public final class CreateGroupTest extends BaseTest {
         final GroupsPage groupsPage = userPage.clickToGroupsPage();
         final SelectGroupsDialogLayer dialogLayer = groupsPage.clickToCreateGroupButton();
         final List<GroupPageTypeCard> typeCards = dialogLayer.wrapCards();
-        final GroupPageTypeCard typeCard = typeCards.get(0);
-        final ModalDialogLayer modalDialogLayer = typeCard.selectCreateDialogLayer();
+        final GroupPageTypeCard publicGroup = typeCards.get(0);
+        final ModalDialogLayer modalDialogLayer = publicGroup.selectCreateDialogLayer();
         final GroupPage groupPage = modalDialogLayer.inputName(GROUP_NAME)
                 .sendDescription("Very cool group")
                 .selectRestriction(true)
