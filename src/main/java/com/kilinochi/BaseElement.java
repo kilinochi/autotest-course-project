@@ -6,7 +6,6 @@ import org.openqa.selenium.By;
 import com.codeborne.selenide.Condition;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
@@ -17,7 +16,7 @@ public class BaseElement {
     }
 
     protected void inputOnPosFromListElements(int pos, By locator, String txt) {
-        searchElementsListNotEmpty(locator).get(0).setValue(txt);
+        searchElementsListNotEmpty(locator).get(pos).setValue(txt);
     }
 
     protected SelenideElement explicitWaitVisible(final By locator) {
