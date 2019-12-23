@@ -1,9 +1,11 @@
 package com.kilinochi.page.product;
 
 import com.kilinochi.page.BasePage;
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.By;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -35,14 +37,13 @@ public class ProductsListPage extends BasePage {
         return this;
     }
 
-    @NotNull
     public int getCount(){
         String str = $(COUNT).getText();
-     //   Matcher matcher = COUNT_PATTERN.matcher(str);
-    ////    if (matcher.find()) {
-     //       String count = StringUtils.remove(matcher.group(), ' ');
-      ////      return Integer.parseInt(count);
-    //    }
+        Matcher matcher = COUNT_PATTERN.matcher(str);
+      if (matcher.find()) {
+           String count = StringUtils.remove(matcher.group(), ' ');
+           return Integer.parseInt(count);
+       }
         return Integer.parseInt(str);
     }
 
